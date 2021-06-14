@@ -3,6 +3,7 @@ package com.openclassrooms.entrevoisins.ui.neighbour_list;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.Log;
 
 
 public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
@@ -13,20 +14,28 @@ public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
 
     /**
      * getItem is called to instantiate the fragment for the given page.
-     * @param position
-     * @return
+     * @param position the position of the page
+     * @return a Fragment initialized with position parameter
      */
     @Override
     public Fragment getItem(int position) {
-        return NeighbourFragment.newInstance();
+        switch (position) {
+            case 0:
+                return new NeighbourFragment();
+            case 1:
+                return new FavoriteNeighbourFragment();
+            default:
+                Log.e("NeighbourPagerAdapter:", "User clicked unknown tab with id:" + position);
+                return null;
+        }
     }
 
     /**
      * get the number of pages
-     * @return
+     * @return 2 as the tab will always have pages
      */
     @Override
     public int getCount() {
-        return 1;
+        return 2;
     }
 }

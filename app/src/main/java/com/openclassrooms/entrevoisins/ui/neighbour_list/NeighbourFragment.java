@@ -28,15 +28,10 @@ public class NeighbourFragment extends Fragment {
     private List<Neighbour> mNeighbours;
     private RecyclerView mRecyclerView;
 
-
-    /**
-     * Create and return a new instance
-     * @return @{@link NeighbourFragment}
-     */
-    public static NeighbourFragment newInstance() {
-        NeighbourFragment fragment = new NeighbourFragment();
-        return fragment;
-    }
+    public NeighbourApiService getApiService() { return mApiService; }
+    public List<Neighbour> getNeighbours() { return mNeighbours; }
+    public void setNeighbours(List<Neighbour> neighbours) { mNeighbours = neighbours; }
+    public RecyclerView getRecyclerView() { return mRecyclerView; }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,10 +50,7 @@ public class NeighbourFragment extends Fragment {
         return view;
     }
 
-    /**
-     * Init the List of neighbours
-     */
-    private void initList() {
+    public void initList() {
         mNeighbours = mApiService.getNeighbours();
         mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours));
     }
@@ -83,7 +75,7 @@ public class NeighbourFragment extends Fragment {
 
     /**
      * Fired if the user clicks on a delete button
-     * @param event
+     * @param event an event that contains a reference to the neighbour to delete
      */
     @Subscribe
     public void onDeleteNeighbour(DeleteNeighbourEvent event) {
