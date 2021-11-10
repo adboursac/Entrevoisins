@@ -1,8 +1,5 @@
 package com.openclassrooms.entrevoisins.service;
 
-import android.os.Build;
-import android.support.annotation.RequiresApi;
-
 import com.openclassrooms.entrevoisins.model.Neighbour;
 
 import java.util.List;
@@ -11,7 +8,7 @@ import java.util.stream.Collectors;
 /**
  * Dummy mock for the Api
  */
-@RequiresApi(api = Build.VERSION_CODES.N)
+
 public class DummyNeighbourApiService implements  NeighbourApiService {
 
     private List<Neighbour> neighbours = DummyNeighbourGenerator.generateNeighbours();

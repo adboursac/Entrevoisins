@@ -1,11 +1,8 @@
 package com.openclassrooms.entrevoisins.service;
 
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 
 import com.openclassrooms.entrevoisins.model.Neighbour;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -109,8 +106,7 @@ public abstract class DummyNeighbourGenerator {
                     "www.facebook.fr",
                     false)
     );
-    
-    @RequiresApi(api = Build.VERSION_CODES.N)
+
     static List<Neighbour> generateNeighbours() {
         //return new ArrayList<>(DUMMY_NEIGHBOURS);
         return DUMMY_NEIGHBOURS.stream().map(n -> new Neighbour(n.getId(),
